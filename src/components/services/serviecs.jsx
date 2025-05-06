@@ -10,76 +10,64 @@ const Services = () => {
                 <h2>Services</h2>
 
                 <div className='container services__container'>
+                    {/* Front-End Development Service */}
                     <article className='services'>
                         <div className='services__head'>
-                            <h3>Web Development</h3>
-
+                            <h3>Front-End Development</h3>
                         </div>
                         <ul className='Services__list'>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Lorem ipsum dolor, sit amet</p>
+                                <p>Building responsive and interactive UIs with React, HTML, CSS, and JavaScript.</p>
                             </li>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Lorem ipsum dolor, sit amet</p>
+                                <p>Mobile-first design with cross-browser compatibility.</p>
                             </li>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Lorem ipsum dolor, sit amet</p>
+                                <p>Integrating third-party libraries and APIs for added functionality.</p>
                             </li>
-                            <li>
-                                <BiCheck className='services__list-icon' />
-                                <p>Lorem ipsum dolor, sit amet</p>
-                            </li>
-                            
-
                         </ul>
                     </article>
 
+                    {/* Back-End Development Service */}
                     <article className='services'>
                         <div className='services__head'>
-                            <h3>Web Development</h3>
-
+                            <h3>Back-End Development</h3>
                         </div>
                         <ul className='Services__list'>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Utilizing MERN stack technologies for scalable solutions</p>
+                                <p>Developing scalable server-side applications using Node.js and Express.</p>
                             </li>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Ensuring seamless experience across all devices</p>
+                                <p>Managing databases with MongoDB and creating RESTful APIs.</p>
                             </li>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Connecting third-party services to enhance functionality</p>
-                            </li>
-                            <li>
-                                <BiCheck className='services__list-icon' />
-                                <p>Performance Optimization</p>
+                                <p>Implementing secure authentication and optimizing server performance.</p>
                             </li>
                         </ul>
                     </article>
+
+                    {/* Content Creation Service */}
                     <article className='services'>
                         <div className='services__head'>
                             <h3>Content Creation</h3>
-
                         </div>
                         <ul className='Services__list'>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Developing informative articles that inform audience</p>
+                                <p>Creating engaging articles and blogs that resonate with your audience.</p>
                             </li>
                             <li>
                                 <BiCheck className='services__list-icon' />
-                                <p>Producing clear website content that reflects your brand </p>
+                                <p>Writing SEO-optimized content that enhances online visibility.</p>
                             </li>
-
-
                         </ul>
                     </article>
-
 
                 </div>
 
@@ -87,4 +75,5 @@ const Services = () => {
         </>
     )
 }
+
 export default Services;

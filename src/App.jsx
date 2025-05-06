@@ -1,3 +1,4 @@
+import "./App.css"
 import About from "./components/About/About"
 import Contact from "./components/contact/contact"
 import Experience from "./components/experience/Experience"
@@ -8,21 +9,23 @@ import Portfolio from "./components/portfolio/portfolio"
 import Services from "./components/services/serviecs"
 import Testimonials from "./components/testimonials/Testimonials"
 
-const App =()=>{
+const App = () => {
   return (
-    <>
-    <Header/>
+    < >
+      <div className="App">
+        <Header />
 
-    <Nav/>
-    <br/>
-    <br/>
-    <About/>
-    <Experience/>
-    <Services />
-    <Portfolio/>
-    <Testimonials/>
-    <Contact/>
-    <Footer/>
+        <Nav />
+        <br />
+        <br />
+        <About />
+        <Experience />
+        <Services />
+        <Portfolio />
+        <Testimonials />
+        <Contact />
+        <Footer />
+      </div>
     </>
   )
 }

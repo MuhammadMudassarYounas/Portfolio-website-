@@ -1,0 +1,132 @@
+/* ExperienceLogo.css */
+
+.experience-container {
+    /* background: linear-gradient(135deg, #1a3a8f, #0d2258); */
+    padding: 60px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-stack-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.tech-stack-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #61dafb;
+}
+
+.icon-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 30px 0;
+    position: relative;
+}
+
+.icon-wrapper::before,
+.icon-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+}
+
+.icon-wrapper::before {
+    left: 0;
+
+}
+
+.icon-wrapper::after {
+    right: 0;
+
+}
+
+.icon-strip {
+    display: flex;
+    gap: 40px;
+    animation: moveRight 20s linear infinite;
+    width: fit-content;
+    align-items: center;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.icon-circle:hover {
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.icon-circle::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.icon-circle:hover::after {
+    opacity: 1;
+}
+
+.icon {
+    font-size: 40px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .icon {
+        font-size: 30px;
+    }
+
+    .tech-stack-title {
+        font-size: 2rem;
+    }
+}

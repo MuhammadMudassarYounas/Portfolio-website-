@@ -1,31 +1,33 @@
-header{
+header {
     height: 100vh;
     padding: 7rem;
     overflow: hidden;
-    
+
 }
 
-.header__container{
+.header__container {
     text-align: center;
     height: 100%;
     position: relative;
-    
+
 }
-span{
+
+span {
     color: #4db5ff;
 }
-.header-icon{
+
+.header-icon {
     margin-left: 6rem;
 }
 
-.cta{
+.cta {
     margin-top: 2.5rem;
     display: flex;
     gap: 1.2rem;
     justify-content: center;
 }
 
-.header__socials{
+.header__socials {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,29 +36,42 @@ span{
     left: 0;
     bottom: 3rem;
 }
-.header__socials::after{
+
+.header__socials::after {
     width: 1px;
     height: 2rem;
     background: var(--color-primary);
 }
-.me{
-    background: linear-gradient(var(--color-primary),transparent);
-    width: 13rem;
-    height: 18rem;
+
+.me {
+    background: linear-gradient(var(--color-primary), transparent);
+    width: 10rem;
+    height: 14rem;
     position: absolute;
-    left: calc(50% - 11rem);
+    left: calc(50% - 5rem);
     margin-top: 4rem;
     border-radius: 12rem 12rem 0 0;
     overflow: hidden;
-    padding: 5rem 1.5rem 1.5rem 1.5rem ;
-   
+    padding: 5rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    /* NEW */
+    justify-content: center;
+    /* NEW - center horizontally */
+    align-items: flex-end;
+    /* NEW - stick image to bottom */
 }
-.me img{
-    margin-top: -2rem;
+
+.me img {
+    max-width: 12rem;
+    max-height: 15rem;
+    z-index: 1;
+    object-fit: contain;
+    /* NEW - better fitting */
 }
 
 
-.scroll__down{
+
+.scroll__down {
     position: absolute;
     right: 1rem;
     bottom: 5rem;
@@ -67,26 +82,19 @@ span{
 }
 
 @media screen and (max-width: 1024px) {
-    header{
+    header {
         height: 68vh;
     }
-    
+
 }
 
 @media screen and (max-width: 600px) {
-    header{
+    header {
         height: 100vh;
         padding: 3rem;
     }
-    .header__socials,
-    .scroll__down{
+
+    .btn-primary {
         display: none;
     }
-    .me{
-        margin-left: 5rem;
-    }
 }
-
-    
-
-
