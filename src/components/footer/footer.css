@@ -1,55 +1,199 @@
-footer{
-    background: var(--color-primary);
-    padding: 2rem 0;
+/* ===== PREMIUM FOOTER ===== */
+#footer {
+    background: rgba(15, 15, 28, 0.95);
+    padding: 4rem 0 2rem;
     text-align: center;
     font-size: 0.9rem;
     margin-top: 5rem;
+    border-top: 1px solid rgba(77, 181, 255, 0.15);
+    position: relative;
+    overflow: hidden;
 }
-footer a{
-    color: var(--color-bg);
+
+#footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4db5ff, #7b68ee, transparent);
+    opacity: 0.5;
 }
-.footer__logo{
-    font-size: 2rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ===== LOGO ===== */
+.footer__logo {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
     display: inline-block;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
 }
-.permalinks{
+
+.footer__logo:hover {
+    transform: translateY(-2px);
+}
+
+.footer__logo-highlight {
+    background: linear-gradient(135deg, #4db5ff, #7b68ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* ===== PERMALINKS ===== */
+.permalinks {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
-    margin: 0 auto 2rem;
+    gap: 2.5rem;
+    margin: 0 auto 3rem;
+    list-style: none;
+    padding: 0;
 }
-.footer__socials{
+
+.permalinks a {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.permalinks a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #4db5ff;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.permalinks a:hover {
+    color: #ffffff;
+}
+
+.permalinks a:hover::after {
+    width: 20px;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.footer__socials {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
 }
-.footer__socials a{
-    background: var(--color-bg);
-    color: var(--color-white);
-    padding: 0.8rem;
-    border-radius: 0.7rem;
+
+.footer__socials a {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
     display: flex;
-    border: 1px solid transparent;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.footer__socials a:hover{
-    background: transparent;
-    color: var(--color-bg);
-    border-color: var(--color-bg);
-}
-.footer__copyright{
-    margin-bottom: 3rem;
-    color: var(--color-bg);
 
+.footer__socials a:hover {
+    background: linear-gradient(135deg, #4db5ff, #7b68ee);
+    color: #ffffff;
+    border-color: transparent;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(77, 181, 255, 0.3);
 }
-@media screen and (max-width: 600px){
+
+/* ===== COPYRIGHT ===== */
+.footer__copyright {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 2rem;
+    width: 100%;
+}
+
+/* ===== TABLET RESPONSIVE (max-width: 1024px) ===== */
+@media screen and (max-width: 1024px) {
+    #footer {
+        padding: 3.5rem 0 2rem;
+    }
     .permalinks {
-        flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 }
 
+/* ===== MOBILE RESPONSIVE (max-width: 600px) ===== */
+@media screen and (max-width: 600px) {
+    #footer {
+        padding: 3rem 0 6rem;
+        margin-top: 4rem;
+    }
+
+    .footer__logo {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .permalinks {
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .permalinks a {
+        font-size: 1rem;
+    }
+
+    .footer__socials {
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .footer__socials a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+
+    .footer__copyright {
+        padding-top: 1.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* ===== VERY SMALL RESPONSIVE (max-width: 380px) ===== */
+@media screen and (max-width: 380px) {
+    .footer__logo {
+        font-size: 1.5rem;
+    }
+    
+    .footer__socials a {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
