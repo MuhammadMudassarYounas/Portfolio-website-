@@ -1,132 +1,225 @@
-/* ExperienceLogo.css */
-
+/* ===== TECH STACK MARQUEE ===== */
 .experience-container {
-    /* background: linear-gradient(135deg, #1a3a8f, #0d2258); */
-    padding: 60px 0;
+    padding: 3.5rem 0 1rem;
     text-align: center;
     color: white;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tech-stack-title {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
     position: relative;
     display: inline-block;
+    background: linear-gradient(135deg, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .tech-stack-title::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+    width: 50px;
     height: 3px;
-    background: #61dafb;
+    background: linear-gradient(90deg, #4db5ff, #7b68ee);
+    border-radius: 2px;
 }
 
+/* ===== ICON WRAPPER ===== */
 .icon-wrapper {
     width: 100%;
     overflow: hidden;
-    padding: 30px 0;
+    padding: 1.5rem 0;
     position: relative;
+    box-sizing: border-box;
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
 }
 
-.icon-wrapper::before,
-.icon-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100px;
-    z-index: 2;
-}
-
-.icon-wrapper::before {
-    left: 0;
-
-}
-
-.icon-wrapper::after {
-    right: 0;
-
-}
-
+/* ===== ICON STRIP ===== */
 .icon-strip {
     display: flex;
-    gap: 40px;
-    animation: moveRight 20s linear infinite;
+    gap: 2.5rem;
+    animation: marqueeScroll 25s linear infinite;
     width: fit-content;
     align-items: center;
 }
 
+.icon-strip:hover {
+    animation-play-state: paused;
+}
+
+/* ===== ICON CIRCLES ===== */
 .icon-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .icon-circle:hover {
-    transform: scale(1.15) translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: scale(1.15) translateY(-6px);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(77, 181, 255, 0.15);
 }
 
+/* Tooltip */
 .icon-circle::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: -30px;
+    bottom: -32px;
     left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
     color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
     white-space: nowrap;
+    pointer-events: none;
+    border: 1px solid rgba(77, 181, 255, 0.15);
 }
 
 .icon-circle:hover::after {
     opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
+/* ===== ICON ===== */
 .icon {
-    font-size: 40px;
+    font-size: 32px;
     color: white;
     transition: transform 0.3s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
-@keyframes moveRight {
+.icon-circle:hover .icon {
+    transform: scale(1.1);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes marqueeScroll {
     0% {
         transform: translateX(-50%);
     }
-
     100% {
         transform: translateX(0%);
     }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .icon-circle {
-        width: 60px;
-        height: 60px;
-    }
-
-    .icon {
-        font-size: 30px;
+/* ===== TABLET (max-width: 1024px) ===== */
+@media screen and (max-width: 1024px) {
+    .experience-container {
+        padding: 3rem 0 1rem;
     }
 
     .tech-stack-title {
-        font-size: 2rem;
+        font-size: 1.4rem;
+    }
+
+    .icon-circle {
+        width: 55px;
+        height: 55px;
+        border-radius: 14px;
+    }
+
+    .icon {
+        font-size: 26px;
+    }
+
+    .icon-strip {
+        gap: 2rem;
+    }
+}
+
+/* ===== MOBILE (max-width: 600px) ===== */
+@media screen and (max-width: 600px) {
+    .experience-container {
+        padding: 1.5rem 0 0.5rem;
+        overflow: hidden;
+    }
+
+    .tech-stack-title {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .icon-wrapper {
+        padding: 1rem 0;
+    }
+
+    .icon-circle {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+    }
+
+    .icon-circle:hover {
+        transform: none;
+    }
+
+    .icon {
+        font-size: 22px;
+    }
+
+    .icon-strip {
+        gap: 1.2rem;
+        animation-duration: 15s;
+    }
+}
+
+/* ===== VERY SMALL (max-width: 380px) ===== */
+@media screen and (max-width: 380px) {
+    .icon-circle {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+    }
+
+    .icon {
+        font-size: 18px;
+    }
+
+    .icon-strip {
+        gap: 1rem;
+    }
+
+    .tech-stack-title {
+        font-size: 1rem;
     }
 }
