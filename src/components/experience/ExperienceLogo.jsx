@@ -12,48 +12,65 @@ import {
     SiTypescript,
     SiGit,
     SiGithub,
-    SiRedux,
     SiNextdotjs
 } from "react-icons/si";
 
 import "./ExperienceLogo.css";
 
-const icons = [
+const row1 = [
     { Icon: SiJavascript, color: "#f7df1e", name: "JavaScript" },
     { Icon: SiReact, color: "#61dafb", name: "React" },
-    { Icon: SiTypescript, color: "#3178c6", name: "TypeScript" },
-    { Icon: SiNodedotjs, color: "#339933", name: "Node.js" },
-    { Icon: SiMongodb, color: "#47a248", name: "MongoDB" },
-    { Icon: SiExpress, color: "#000000", name: "Express" },
-    { Icon: SiNextdotjs, color: "#000000", name: "Next.js" },
-    { Icon: SiCss3, color: "#264de4", name: "CSS3" },
-    { Icon: SiBootstrap, color: "#7952b3", name: "Bootstrap" },
-    { Icon: SiTailwindcss, color: "#38b2ac", name: "Tailwind" },
+    { Icon: SiNextdotjs, color: "#ffffff", name: "Next.js" },
     { Icon: SiHtml5, color: "#e34f26", name: "HTML5" },
-    { Icon: SiGit, color: "#f05032", name: "Git" },
-    { Icon: SiGithub, color: "#181717", name: "GitHub" },
+    { Icon: SiCss3, color: "#264de4", name: "CSS3" },
+    { Icon: SiTailwindcss, color: "#38b2ac", name: "Tailwind" },
+    { Icon: SiBootstrap, color: "#7952b3", name: "Bootstrap" },
 ];
 
-const MovingIcons = () => {
+const row2 = [
+    { Icon: SiTypescript, color: "#3178c6", name: "TypeScript" },
+    { Icon: SiNodedotjs, color: "#339933", name: "Node.js" },
+    { Icon: SiExpress, color: "#ffffff", name: "Express" },
+    { Icon: SiMongodb, color: "#47a248", name: "MongoDB" },
+    { Icon: SiGit, color: "#f05032", name: "Git" },
+    { Icon: SiGithub, color: "#ffffff", name: "GitHub" },
+];
+
+const TechBadge = ({ Icon, color, name }) => (
+    <div className="tech-badge">
+        <div className="tech-badge-inner" style={{ '--hover-color': color }}>
+            <Icon className="tech-badge-icon" />
+            <span className="tech-badge-name">{name}</span>
+        </div>
+    </div>
+);
+
+const TechStackPremium = () => {
     return (
-        <div className="experience-container">
-            <h2 className="tech-stack-title">My Tech Stack</h2>
-            <div className="icon-wrapper">
-                <div className="icon-strip">
-                    {[...icons, ...icons].map(({ Icon, color, name }, index) => (
-                        <div
-                            className="icon-circle"
-                            key={index}
-                            style={{ backgroundColor: color }}
-                            data-tooltip={name}
-                        >
-                            <Icon className="icon" />
-                        </div>
-                    ))}
+        <div className="tech-stack-wrapper">
+            <h2 className="tech-stack-title">Technologies I Use</h2>
+            
+            <div className="tech-marquee-container">
+                {/* Row 1 - Moves Left */}
+                <div className="tech-marquee-row">
+                    <div className="tech-marquee-track track-left">
+                        {[...row1, ...row1, ...row1].map((tech, index) => (
+                            <TechBadge key={`r1-${index}`} {...tech} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Row 2 - Moves Right */}
+                <div className="tech-marquee-row">
+                    <div className="tech-marquee-track track-right">
+                        {[...row2, ...row2, ...row2].map((tech, index) => (
+                            <TechBadge key={`r2-${index}`} {...tech} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default MovingIcons;
+export default TechStackPremium;
