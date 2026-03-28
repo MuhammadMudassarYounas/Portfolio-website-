@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import "./about.css";
+import "./About.css";
 import { FaAward } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
 import { VscFolderLibrary } from 'react-icons/vsc';
