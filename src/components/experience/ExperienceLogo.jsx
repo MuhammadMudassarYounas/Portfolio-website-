@@ -39,7 +39,7 @@ const row2 = [
 const TechBadge = ({ Icon, color, name }) => (
     <div className="tech-badge">
         <div className="tech-badge-inner" style={{ '--hover-color': color }}>
-            <Icon className="tech-badge-icon" />
+            <Icon className="tech-badge-icon" style={{ color }} />
             <span className="tech-badge-name">{name}</span>
         </div>
     </div>
@@ -48,13 +48,19 @@ const TechBadge = ({ Icon, color, name }) => (
 const TechStackPremium = () => {
     return (
         <div className="tech-stack-wrapper">
-            <h2 className="tech-stack-title">Technologies I Use</h2>
+            <div className="tech-stack-header">
+                <span className="tech-stack-eyebrow">Tech Stack</span>
+                <h2 className="tech-stack-title">Tools & Technologies</h2>
+                <p className="tech-stack-subtitle">
+                    Modern tools I work with to build exceptional digital experiences
+                </p>
+            </div>
             
             <div className="tech-marquee-container">
                 {/* Row 1 - Moves Left */}
                 <div className="tech-marquee-row">
                     <div className="tech-marquee-track track-left">
-                        {[...row1, ...row1, ...row1].map((tech, index) => (
+                        {[...row1, ...row1, ...row1, ...row1].map((tech, index) => (
                             <TechBadge key={`r1-${index}`} {...tech} />
                         ))}
                     </div>
@@ -63,11 +69,17 @@ const TechStackPremium = () => {
                 {/* Row 2 - Moves Right */}
                 <div className="tech-marquee-row">
                     <div className="tech-marquee-track track-right">
-                        {[...row2, ...row2, ...row2].map((tech, index) => (
+                        {[...row2, ...row2, ...row2, ...row2].map((tech, index) => (
                             <TechBadge key={`r2-${index}`} {...tech} />
                         ))}
                     </div>
                 </div>
+            </div>
+
+            <div className="tech-stack-footer">
+                <div className="tech-stack-dot"></div>
+                <span>Always learning, always building</span>
+                <div className="tech-stack-dot"></div>
             </div>
         </div>
     );

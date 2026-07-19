@@ -1,83 +1,361 @@
 .tech-stack-wrapper {
     margin-top: 5rem;
-    padding: 3rem 0;
-    border-top: 1px solid var(--color-border);
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative Background */
+.tech-stack-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(124, 92, 255, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Header Section */
+.tech-stack-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tech-stack-eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    background: rgba(124, 92, 255, 0.12);
+    padding: 0.3rem 1.2rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.tech-stack-eyebrow:hover {
+    background: rgba(124, 92, 255, 0.2);
+    transform: scale(1.05);
 }
 
 .tech-stack-title {
-    text-align: center;
-    font-size: 1.05rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    margin-bottom: 2.2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
 }
 
+.tech-stack-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Marquee Container */
 .tech-marquee-container {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
-    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    gap: 1.2rem;
+    position: relative;
+    z-index: 1;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
 }
 
 .tech-marquee-row {
     overflow: hidden;
+    padding: 0.25rem 0;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .tech-marquee-track {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
     width: max-content;
+    padding: 0.5rem 0;
 }
 
 .track-left {
-    animation: marquee-left 32s linear infinite;
+    animation: marquee-left 40s linear infinite;
 }
 
 .track-right {
-    animation: marquee-right 32s linear infinite;
+    animation: marquee-right 40s linear infinite;
+}
+
+/* Pause on hover */
+.tech-marquee-row:hover .tech-marquee-track {
+    animation-play-state: paused;
 }
 
 @keyframes marquee-left {
     from { transform: translateX(0); }
-    to { transform: translateX(-33.333%); }
+    to { transform: translateX(-25%); }
 }
 
 @keyframes marquee-right {
-    from { transform: translateX(-33.333%); }
+    from { transform: translateX(-25%); }
     to { transform: translateX(0); }
+}
+
+/* Tech Badges */
+.tech-badge {
+    flex-shrink: 0;
 }
 
 .tech-badge-inner {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.7rem 1.1rem;
+    gap: 0.7rem;
+    padding: 0.7rem 1.4rem;
     border-radius: 999px;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     white-space: nowrap;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Glow Effect */
+.tech-badge-inner::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 999px;
+    padding: 2px;
+    background: var(--hover-color, var(--color-primary));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-badge-inner:hover::before {
+    opacity: 1;
 }
 
 .tech-badge-inner:hover {
+    transform: translateY(-3px) scale(1.02);
     border-color: var(--hover-color, var(--color-primary));
-    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .tech-badge-icon {
-    font-size: 1.1rem;
-    color: var(--color-light);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    filter: brightness(0.8);
 }
 
 .tech-badge-inner:hover .tech-badge-icon {
-    color: var(--hover-color, var(--color-primary));
+    filter: brightness(1);
+    transform: scale(1.1) rotate(-5deg);
 }
 
 .tech-badge-name {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-light);
+    transition: color 0.3s ease;
+}
+
+.tech-badge-inner:hover .tech-badge-name {
+    color: var(--hover-color, var(--color-primary));
+}
+
+/* Footer */
+.tech-stack-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    position: relative;
+    z-index: 1;
+}
+
+.tech-stack-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.tech-stack-dot:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .tech-stack-title {
+        font-size: 1.8rem;
+    }
+    
+    .tech-marquee-track {
+        gap: 1rem;
+    }
+    
+    .tech-badge-inner {
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tech-stack-wrapper {
+        margin-top: 3rem;
+        padding: 2rem 0 1rem;
+    }
+    
+    .tech-stack-title {
+        font-size: 1.5rem;
+    }
+    
+    .tech-stack-subtitle {
+        font-size: 0.85rem;
+        padding: 0 1rem;
+    }
+    
+    .tech-marquee-container {
+        gap: 0.8rem;
+    }
+    
+    .tech-marquee-row {
+        padding: 0.15rem 0;
+    }
+    
+    .tech-marquee-track {
+        gap: 0.8rem;
+        padding: 0.3rem 0;
+    }
+    
+    .tech-badge-inner {
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+    }
+    
+    .tech-badge-icon {
+        font-size: 1rem;
+    }
+    
+    .tech-badge-name {
+        font-size: 0.75rem;
+    }
+    
+    .track-left {
+        animation-duration: 30s;
+    }
+    
+    .track-right {
+        animation-duration: 30s;
+    }
+    
+    .tech-stack-footer {
+        font-size: 0.75rem;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tech-stack-title {
+        font-size: 1.25rem;
+    }
+    
+    .tech-stack-eyebrow {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.8rem;
+    }
+    
+    .tech-marquee-track {
+        gap: 0.6rem;
+    }
+    
+    .tech-badge-inner {
+        padding: 0.4rem 0.8rem;
+        gap: 0.4rem;
+    }
+    
+    .tech-badge-icon {
+        font-size: 0.85rem;
+    }
+    
+    .tech-badge-name {
+        font-size: 0.7rem;
+    }
+    
+    .track-left {
+        animation-duration: 25s;
+    }
+    
+    .track-right {
+        animation-duration: 25s;
+    }
+}
+
+/* Dark Mode Optimizations */
+@media (prefers-color-scheme: dark) {
+    .tech-marquee-row {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .tech-badge-inner {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+    
+    .tech-badge-inner:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--hover-color);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .track-left,
+    .track-right {
+        animation-duration: 60s;
+    }
+    
+    .tech-badge-inner {
+        transition: none;
+    }
+    
+    .tech-stack-dot {
+        animation: none;
+    }
+    
+    .tech-badge-inner:hover {
+        transform: none;
+    }
 }

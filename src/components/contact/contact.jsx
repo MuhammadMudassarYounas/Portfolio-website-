@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import "./contact.css";
-import { MdOutlineEmail } from 'react-icons/md';
-
-import { BsWhatsapp } from 'react-icons/bs';
+import { MdOutlineEmail, MdPhone, MdLocationOn } from 'react-icons/md';
+import { BsWhatsapp, BsGithub, BsLinkedin } from 'react-icons/bs';
+import { FaTelegramPlane } from 'react-icons/fa';
+import { FiSend } from 'react-icons/fi';
 import emailjs from "emailjs-com";
 
 const Contact = () => {
@@ -11,6 +12,11 @@ const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
 
     // Scroll animation observer
     useEffect(() => {
@@ -18,7 +24,7 @@ const Contact = () => {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    observer.unobserve(entry.target);
+                    entry.target.classList.add('contact--visible');
                 }
             },
             { threshold: 0.15 }
@@ -30,6 +36,13 @@ const Contact = () => {
 
         return () => observer.disconnect();
     }, []);
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -46,6 +59,7 @@ const Contact = () => {
                 () => {
                     setIsSubmitting(false);
                     setSubmitStatus('success');
+                    setFormData({ name: '', email: '', message: '' });
                     e.target.reset();
                     setTimeout(() => setSubmitStatus(null), 5000);
                 },
@@ -58,63 +72,175 @@ const Contact = () => {
             );
     };
 
+    const contactOptions = [
+        {
+            icon: MdOutlineEmail,
+            title: "Email",
+            value: "mudassaryounas362@gmail.com",
+            link: "mailto:mudassaryounas362@gmail.com",
+            color: "#60a5fa"
+        },
+        {
+            icon: BsWhatsapp,
+            title: "WhatsApp",
+            value: "+92-317-426-8086",
+            link: "https://wa.me/923174268086",
+            color: "#34d399"
+        },
+        {
+            icon: BsLinkedin,
+            title: "LinkedIn",
+            value: "Connect with me",
+            link: "https://www.linkedin.com/in/mudassar2026/",
+            color: "#0a66c2"
+        },
+        {
+            icon: BsGithub,
+            title: "GitHub",
+            value: "View my work",
+            link: "https://github.com/MuhammadMudassarYounas",
+            color: "#ffffff"
+        }
+    ];
+
     return (
-        <section id="contact" ref={sectionRef} className={isVisible ? "contact--visible" : ""}>
+        <section id="contact" ref={sectionRef}>
             <div className="section__header">
                 <span className="section__eyebrow">Get In Touch</span>
                 <h2 className="section__title">Let's Work Together</h2>
-                <p className="contact__lead">Have a project in mind or an opportunity to discuss? My inbox is always open.</p>
+                <p className="contact__lead">
+                    Have a project in mind or an opportunity to discuss? 
+                    <br />My inbox is always open.
+                </p>
             </div>
 
             <div className='container contact__container'>
+                {/* Contact Options */}
                 <div className='contact__options'>
-                    <article className='contact__option'>
-                        <div className="contact__option-icon-wrapper">
-                            <MdOutlineEmail className='contact__option-icon' />
-                        </div>
-                        <h4>Email</h4>
-                        <h6>mudassaryounas362@gmail.com</h6>
-                        <a href="mailto:mudassaryounas362@gmail.com" target="_blank" rel="noreferrer">Send a message</a>
-                    </article>
-
-
-                    <article className='contact__option'>
-                        <div className="contact__option-icon-wrapper">
-                            <BsWhatsapp className='contact__option-icon' />
-                        </div>
-                        <h4>WhatsApp</h4>
-                        <h6>+92-3174268086</h6>
-                        <a href="https://wa.me/923174268086" target="_blank" rel="noreferrer">Send a message</a>
-                    </article>
+                    {contactOptions.map((option, index) => (
+                        <article 
+                            className='contact__option' 
+                            key={index}
+                            style={{ 
+                                '--contact-color': option.color,
+                                animationDelay: `${0.3 + index * 0.1}s`,
+                                opacity: 0,
+                                animation: isVisible ? `fadeInLeft 0.6s ease forwards` : 'none'
+                            }}
+                        >
+                            <div className="contact__option-icon-wrapper">
+                                <option.icon className='contact__option-icon' />
+                            </div>
+                            <h4>{option.title}</h4>
+                            <h6>{option.value}</h6>
+                            <a 
+                                href={option.link} 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="contact__option-link"
+                            >
+                                <span>Send a message</span>
+                                <FiSend className="contact__option-arrow" />
+                            </a>
+                        </article>
+                    ))}
                 </div>
 
+                {/* Contact Form */}
                 <form ref={form} onSubmit={sendEmail} className="contact__form">
+                    <div className="contact__form-header">
+                        <h3>Send a Message</h3>
+                        <p>Fill in the form below and I'll get back to you soon</p>
+                    </div>
+
                     <div className="form__group">
-                        <input type="text" name='name' placeholder='Your Full Name' required />
+                        <label htmlFor="name">
+                            <span className="form__label-icon">👤</span>
+                            Full Name
+                        </label>
+                        <input 
+                            type="text" 
+                            name='name' 
+                            id="name"
+                            placeholder='Your Full Name' 
+                            value={formData.name}
+                            onChange={handleChange}
+                            required 
+                        />
                         <div className="form__input-highlight"></div>
                     </div>
 
                     <div className="form__group">
-                        <input type="email" name='email' placeholder='Your Email' required />
+                        <label htmlFor="email">
+                            <span className="form__label-icon">✉️</span>
+                            Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            name='email' 
+                            id="email"
+                            placeholder='Your Email' 
+                            value={formData.email}
+                            onChange={handleChange}
+                            required 
+                        />
                         <div className="form__input-highlight"></div>
                     </div>
 
                     <div className="form__group">
-                        <textarea name="message" rows="7" placeholder='Your Message' required></textarea>
+                        <label htmlFor="message">
+                            <span className="form__label-icon">💬</span>
+                            Message
+                        </label>
+                        <textarea 
+                            name="message" 
+                            id="message"
+                            rows="6" 
+                            placeholder='Your Message' 
+                            value={formData.message}
+                            onChange={handleChange}
+                            required
+                        ></textarea>
                         <div className="form__input-highlight"></div>
                     </div>
 
-                    <button type='submit' className='btn contact__btn-submit' disabled={isSubmitting}>
-                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                    <button 
+                        type='submit' 
+                        className='btn contact__btn-submit' 
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? (
+                            <>
+                                <span className="spinner"></span>
+                                Sending...
+                            </>
+                        ) : (
+                            <>
+                                <FiSend className="btn-icon" />
+                                Send Message
+                            </>
+                        )}
                     </button>
 
                     {submitStatus === 'success' && (
-                        <div className="submit__msg success">Message sent successfully!</div>
+                        <div className="submit__msg success">
+                            <span className="msg-icon">✓</span>
+                            Message sent successfully! I'll get back to you soon.
+                        </div>
                     )}
                     {submitStatus === 'error' && (
-                        <div className="submit__msg error">Oops! Something went wrong.</div>
+                        <div className="submit__msg error">
+                            <span className="msg-icon">✕</span>
+                            Oops! Something went wrong. Please try again.
+                        </div>
                     )}
                 </form>
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="contact__decorations">
+                <div className="contact__decoration contact__decoration--1"></div>
+                <div className="contact__decoration contact__decoration--2"></div>
             </div>
         </section>
     )
