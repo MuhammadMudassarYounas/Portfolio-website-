@@ -62,10 +62,9 @@ const Testimonials = () => {
 
     return (
         <section id='Testimonials' ref={sectionRef} className={isVisible ? "testimonials--visible" : ""}>
-            <div className="testimonials__header">
-                <h5 className="testimonials__subtitle">Review from Clients</h5>
-                <h2 className="testimonials__title">Testimonials</h2>
-                <div className="testimonials__title-line"></div>
+            <div className="section__header">
+                <span className="section__eyebrow">Client Feedback</span>
+                <h2 className="section__title">Testimonials</h2>
             </div>
 
             <Swiper 

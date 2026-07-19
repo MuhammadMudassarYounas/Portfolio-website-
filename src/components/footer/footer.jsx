@@ -1,40 +1,38 @@
 import React from 'react';
 import "./footer.css";
-import { FaFacebookF } from 'react-icons/fa';
-import { FiInstagram, FiTwitter } from 'react-icons/fi';
+import { BsDribbble, BsGithub, BsLinkedin } from 'react-icons/bs';
 
 const Footer = () => {
     return (
         <footer id="footer">
             <div className="footer__container">
-                <a href="#" className="footer__logo">
-                    Wis<span className="footer__logo-highlight">Dev</span> Technology
+                <a href="#home" className="footer__logo">
+                    Muhammad <span className="footer__logo-highlight">Mudassar</span>
                 </a>
 
                 <ul className="permalinks">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#experience">Skills</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#portfolio">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
 
                 <div className="footer__socials">
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
-                        <FaFacebookF />
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                        <BsLinkedin />
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
-                        <FiInstagram />
+                    <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
+                        <BsGithub />
                     </a>
-                    <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
-                        <FiTwitter />
+                    <a href="https://dribbble.com" target="_blank" rel="noreferrer" aria-label="Dribbble">
+                        <BsDribbble />
                     </a>
                 </div>
 
                 <div className="footer__copyright">
-                    <small>&copy; {new Date().getFullYear()} WisDev Technology. All rights reserved.</small>
+                    <small>&copy; {new Date().getFullYear()} Muhammad Mudassar. All rights reserved.</small>
                 </div>
             </div>
         </footer>

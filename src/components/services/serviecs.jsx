@@ -28,10 +28,9 @@ const Services = () => {
 
     return (
         <section id='services' ref={sectionRef} className={isVisible ? "services--visible" : ""}>
-            <div className="services__header-main">
-                <h5 className="services__subtitle">What I Offer</h5>
-                <h2 className="services__title">Services</h2>
-                <div className="services__title-line"></div>
+            <div className="section__header">
+                <span className="section__eyebrow">What I Offer</span>
+                <h2 className="section__title">Services</h2>
             </div>
 
             <div className='container services__container'>

@@ -24,10 +24,9 @@ const About = () => {
 
     return (
         <section id="about" ref={sectionRef}>
-            <div className="about__header">
-                <h5 className="about__subtitle">Get To Know</h5>
-                <h2 className="about__title">About Me</h2>
-                <div className="about__title-line"></div>
+            <div className="section__header">
+                <span className="section__eyebrow">Get To Know Me</span>
+                <h2 className="section__title">About Me</h2>
             </div>
 
             <div className="container about__container">

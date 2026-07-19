@@ -60,10 +60,10 @@ const Contact = () => {
 
     return (
         <section id="contact" ref={sectionRef} className={isVisible ? "contact--visible" : ""}>
-            <div className="contact__header">
-                <h5 className="contact__subtitle">Get In Touch</h5>
-                <h2 className="contact__title">Contact Me</h2>
-                <div className="contact__title-line"></div>
+            <div className="section__header">
+                <span className="section__eyebrow">Get In Touch</span>
+                <h2 className="section__title">Let's Work Together</h2>
+                <p className="contact__lead">Have a project in mind or an opportunity to discuss? My inbox is always open.</p>
             </div>
 
             <div className='container contact__container'>

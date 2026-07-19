@@ -43,10 +43,9 @@ const Experience = () => {
     return (
         <>
             <section id="experience" ref={sectionRef}>
-                <div className="experience__header">
-                    <h5 className="experience__subtitle">What Skills I Have</h5>
-                    <h2 className="experience__title">My Experience</h2>
-                    <div className="experience__title-line"></div>
+                <div className="section__header">
+                    <span className="section__eyebrow">What I Bring</span>
+                    <h2 className="section__title">Skills &amp; Experience</h2>
                 </div>
 
                 <div className="container experience__container">

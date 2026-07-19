@@ -80,10 +80,9 @@ const Portfolio = () => {
 
     return (
         <section id='portfolio' ref={sectionRef} className={isVisible ? "portfolio--visible" : ""}>
-            <div className="portfolio__header">
-                <h5 className="portfolio__subtitle">My Recent Work</h5>
-                <h2 className="portfolio__title">Portfolio Projects</h2>
-                <div className="portfolio__title-line"></div>
+            <div className="section__header">
+                <span className="section__eyebrow">My Recent Work</span>
+                <h2 className="section__title">Featured Projects</h2>
             </div>
 
             <div className='container portfolio__container'>

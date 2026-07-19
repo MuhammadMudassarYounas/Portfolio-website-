@@ -1,21 +1,83 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./nav.css";
-import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai';
-import { BiBook, BiMessageSquareDetail } from 'react-icons/bi';
-import { RiServiceLine } from 'react-icons/ri';
 
-const Nav =()=>{
+const links = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#experience", label: "Skills" },
+    { href: "#services", label: "Services" },
+    { href: "#portfolio", label: "Work" },
+    { href: "#contact", label: "Contact" },
+];
 
-    const [activeNav,setActiveNav]= useState("#")
+const Nav = () => {
+    const [activeNav, setActiveNav] = useState("#home");
+    const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-    return(
-        <nav>
-        <a href="#" onClick={()=> setActiveNav("#")} className={activeNav ==="#"?"active":""}><AiOutlineHome/></a>
-        <a href="#about" onClick={()=> setActiveNav("#about")} className={activeNav ==="#about"?"active":""}><AiOutlineUser/></a>
-        <a href="#experience" onClick={()=> setActiveNav("#experience")} className={activeNav ==="#experience"?"active":""}><BiBook/></a>
-        <a href="#services" onClick={()=> setActiveNav("#services")} className={activeNav ==="services"?"active":""}><RiServiceLine/></a>
-        <a href="#contact" onClick={()=> setActiveNav("#contact")} className={activeNav ==="#contact"?"active":""}><BiMessageSquareDetail/></a>
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const handleClick = (href) => {
+        setActiveNav(href);
+        setMenuOpen(false);
+    };
+
+    return (
+        <nav className={scrolled ? "nav--scrolled" : ""}>
+            <div className="nav__container">
+                <a href="#home" className="nav__logo" onClick={() => handleClick("#home")}>
+                    M<span className="nav__logo-dot">.</span>Younas
+                </a>
+
+                <div className="nav__links">
+                    {links.map((link) => (
+                        <a
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => handleClick(link.href)}
+                            className={activeNav === link.href ? "active" : ""}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                </div>
+
+                <a href="#contact" className="btn btn-primary nav__cta" onClick={() => handleClick("#contact")}>
+                    Hire Me
+                </a>
+
+                <button
+                    className={`nav__toggle ${menuOpen ? "nav__toggle--open" : ""}`}
+                    aria-label="Toggle menu"
+                    onClick={() => setMenuOpen((prev) => !prev)}
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <div className={`nav__mobile ${menuOpen ? "nav__mobile--open" : ""}`}>
+                {links.map((link) => (
+                    <a
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => handleClick(link.href)}
+                        className={activeNav === link.href ? "active" : ""}
+                    >
+                        {link.label}
+                    </a>
+                ))}
+                <a href="#contact" className="btn btn-primary" onClick={() => handleClick("#contact")}>
+                    Hire Me
+                </a>
+            </div>
         </nav>
-    )
-}
+    );
+};
+
 export default Nav;
