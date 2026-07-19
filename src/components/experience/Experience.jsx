@@ -1,21 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./Experience.css";
 import { BsPatchCheckFill } from 'react-icons/bs';
+import { FaCode, FaServer } from 'react-icons/fa';
 import MovingIcons from './ExperienceLogo';
 
 const frontendSkills = [
-    { name: "JavaScript", level: "Experienced", percent: 90 },
-    { name: "React JS", level: "Experienced", percent: 85 },
-    { name: "HTML", level: "Experienced", percent: 95 },
-    { name: "CSS", level: "Intermediate", percent: 75 },
-    { name: "TailWind", level: "Intermediate", percent: 70 },
-    { name: "Bootstrap", level: "Experienced", percent: 85 },
+    { name: "React.js", level: "Experienced", percent: 90 },
+    { name: "JavaScript (ES6+)", level: "Experienced", percent: 92 },
+    { name: "React Router", level: "Experienced", percent: 90 },
+    { name: "Tailwind CSS", level: "Experienced", percent: 94 },
+    { name: "HTML5", level: "Experienced", percent: 98 },
+    { name: "Bootstrap", level: "Experienced", percent: 95 },
+    { name: "CSS3", level: "Experienced", percent: 95 },
+    { name: "Redux Toolkit", level: "Experienced", percent: 88 },
+    { name: "Responsive Design", level: "Experienced", percent: 95 },
+    { name: "Axios & API Integration", level: "Experienced", percent: 90 },
 ];
 
 const backendSkills = [
-    { name: "Node JS", level: "Basic", percent: 50 },
-    { name: "MongoDB", level: "Basic", percent: 45 },
-    { name: "MySql", level: "Experienced", percent: 80 },
+    { name: "Node.js", level: "Experienced", percent: 90 },
+    { name: "Express.js", level: "Experienced", percent: 90 },
+    { name: "MongoDB", level: "Experienced", percent: 88 },
+    { name: "MySQL", level: "Experienced", percent: 85 },
+    { name: "REST API", level: "Experienced", percent: 92 },
+    { name: "JWT Authentication", level: "Experienced", percent: 90 },
+    { name: "FastAPI", level: "Intermediate", percent: 75 },
+    { name: "Python", level: "Intermediate", percent: 78 },
+    { name: "Git & GitHub", level: "Experienced", percent: 90 },
+    { name: "Render & Vercel", level: "Experienced", percent: 86 },
 ];
 
 const getLevelClass = (level) => {
@@ -26,11 +38,13 @@ const getLevelClass = (level) => {
 
 const Experience = () => {
     const sectionRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
+                    setIsVisible(true);
                     entry.target.classList.add('experience--visible');
                 }
             },
@@ -50,9 +64,11 @@ const Experience = () => {
 
                 <div className="container experience__container">
                     {/* Frontend Panel */}
-                    <div className="experience__panel experience__frontend" id="experience-frontend">
+                    <div className="experience__panel experience__frontend">
                         <div className="experience__panel-header">
-                            <span className="experience__panel-icon">⚡</span>
+                            <span className="experience__panel-icon">
+                                <FaCode />
+                            </span>
                             <h3>Frontend Development</h3>
                         </div>
                         <div className="experience__content">
@@ -60,7 +76,11 @@ const Experience = () => {
                                 <article
                                     className="experience__details"
                                     key={index}
-                                    style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+                                    style={{ 
+                                        animationDelay: `${0.5 + index * 0.1}s`,
+                                        opacity: 0,
+                                        animation: isVisible ? `fadeInUp 0.6s ease forwards` : 'none'
+                                    }}
                                 >
                                     <div className="experience__details-top">
                                         <BsPatchCheckFill className="experience__details-icon" />
@@ -72,9 +92,12 @@ const Experience = () => {
                                         </div>
                                     </div>
                                     <div className="experience__progress-bar">
-                                        <div
+                                        <div 
                                             className="experience__progress-fill"
-                                            style={{ '--progress-width': `${skill.percent}%` }}
+                                            style={{ 
+                                                '--progress-width': isVisible ? `${skill.percent}%` : '0%',
+                                                animationDelay: `${0.7 + index * 0.1}s`
+                                            }}
                                         ></div>
                                     </div>
                                 </article>
@@ -83,9 +106,11 @@ const Experience = () => {
                     </div>
 
                     {/* Backend Panel */}
-                    <div className="experience__panel experience__backend" id="experience-backend">
+                    <div className="experience__panel experience__backend">
                         <div className="experience__panel-header">
-                            <span className="experience__panel-icon">🛠️</span>
+                            <span className="experience__panel-icon">
+                                <FaServer />
+                            </span>
                             <h3>Backend Development</h3>
                         </div>
                         <div className="experience__content">
@@ -93,7 +118,11 @@ const Experience = () => {
                                 <article
                                     className="experience__details"
                                     key={index}
-                                    style={{ animationDelay: `${0.7 + index * 0.1}s` }}
+                                    style={{ 
+                                        animationDelay: `${0.7 + index * 0.1}s`,
+                                        opacity: 0,
+                                        animation: isVisible ? `fadeInUp 0.6s ease forwards` : 'none'
+                                    }}
                                 >
                                     <div className="experience__details-top">
                                         <BsPatchCheckFill className="experience__details-icon" />
@@ -105,9 +134,12 @@ const Experience = () => {
                                         </div>
                                     </div>
                                     <div className="experience__progress-bar">
-                                        <div
+                                        <div 
                                             className="experience__progress-fill"
-                                            style={{ '--progress-width': `${skill.percent}%` }}
+                                            style={{ 
+                                                '--progress-width': isVisible ? `${skill.percent}%` : '0%',
+                                                animationDelay: `${0.9 + index * 0.1}s`
+                                            }}
                                         ></div>
                                     </div>
                                 </article>

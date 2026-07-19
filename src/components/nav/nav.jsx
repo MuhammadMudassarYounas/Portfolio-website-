@@ -30,7 +30,7 @@ const Nav = () => {
         <nav className={scrolled ? "nav--scrolled" : ""}>
             <div className="nav__container">
                 <a href="#home" className="nav__logo" onClick={() => handleClick("#home")}>
-                    M<span className="nav__logo-dot">.</span>Younas
+                    M<span className="nav__logo-dot">.</span>Mudassar Younas
                 </a>
 
                 <div className="nav__links">

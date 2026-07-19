@@ -4,7 +4,7 @@ import { FaAward } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
 import { VscFolderLibrary } from 'react-icons/vsc';
 
-const MyPhoto = "/images/02.jpg";
+const MyPhoto = "/images/02.jpeg";
 
 const About = () => {
     const sectionRef = useRef(null);
@@ -69,12 +69,12 @@ const About = () => {
                     </div>
 
                     <p className="about__text">
-                        My name is <span className="about__highlight">Muhammad Mudassar Younas</span>,
-                        and I am a Computer Science student at the <span className="about__highlight">University of Engineering and Technology (UET) Lahore</span>.
-                        I have a strong passion for software development, particularly in MERN stack and React.js.
-                        I am also actively involved in <span className="about__highlight">Codator</span>,
-                        a university tech society, where I serve as the Director of Research and Planning
-                        and the General Secretary of Codator CS&E.
+                        I'm <span className="about__highlight">Muhammad Mudassar Younas</span>,
+                        a Computer Science undergraduate at <span className="about__highlight">University of Engineering and Technology (UET) Lahore</span>,
+                        building scalable, real-world web applications with the <span className="about__highlight">MERN Stack</span> and <span className="about__highlight">React.js</span>.
+                        Beyond code, I lead as <span className="about__highlight">Director of Research & Planning</span> and
+                        <span className="about__highlight"> General Secretary at Codator</span>, driving technical initiatives and community growth
+                        within UET's premier tech society.
                     </p>
 
                     <a href="#contact" className="btn about__cta">

@@ -8,8 +8,13 @@ const roles = [
     "Full Stack (MERN) Developer",
     "React.js Specialist",
     "Node.js Engineer",
-    "Mongo DB Developer",
+    "MongoDB Developer",
     "Express.js Developer",
+    "REST API Developer",
+    "JWT & OAuth Authentication",
+    "AI/ML Enthusiast",
+    "UI/UX Focused Developer",
+    "Problem Solver",
 ];
 
 const Header = () => {
@@ -56,14 +61,15 @@ const Header = () => {
                     <div className="header__content">
                         <span className="header__greeting">Hello I'm</span>
                         <h1 className="header__name">
-                            Muhammad <span className="header__name-highlight">Mudassar</span>
+                            Muhammad <span className="header__name-highlight">Mudassar Younas</span>
                         </h1>
                         <h2 className="header__role">
                             <span className="header__role-text">{displayText}</span>
                             <span className="header__cursor">|</span>
                         </h2>
                         <p className="header__description">
-                            Crafting modern, scalable web applications with clean code and pixel-perfect design.
+                            Crafting modern, scalable web applications with clean code, pixel-perfect design,
+                            and a passion for turning complex problems into simple, elegant solutions.
                         </p>
                         <CV />
                     </div>
